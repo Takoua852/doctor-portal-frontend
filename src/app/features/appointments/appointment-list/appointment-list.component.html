@@ -1,0 +1,25 @@
+<h2>Appointments</h2>
+
+<p *ngIf="error">{{ error }}</p>
+
+<ul *ngIf="appointments.length > 0; else noData">
+  <li *ngFor="let appt of appointments">
+    <strong>{{ appt.title }}</strong><br>
+    {{ appt.date | date:'short' }}<br>
+
+    <span *ngIf="appt.doctor_username">
+      Doctor: {{ appt.doctor_username }}
+    </span>
+
+    <span *ngIf="appt.patient_username">
+      Patient: {{ appt.patient_username }}
+    </span>
+
+    <br>
+    <button (click)="deleteAppointment(appt.id)">Delete</button>
+  </li>
+</ul>
+
+<ng-template #noData>
+  <p>No appointments found</p>
+</ng-template>
