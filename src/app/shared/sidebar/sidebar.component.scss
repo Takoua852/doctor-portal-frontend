@@ -1,0 +1,104 @@
+.sidebar-wrapper {
+  height: 100vh;
+  width: 260px;
+  background: #1a1c1e; // Ein edles Dunkelgrau/Schwarz für Kontrast zum Dashboard
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+
+  .brand-section {
+    padding: 30px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+
+    .logo-icon {
+      background: #2e7cf0;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      mat-icon { color: white; font-size: 24px; }
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      span { color: #2e7cf0; }
+    }
+  }
+
+  .nav-container {
+    flex: 1;
+    padding: 0 16px;
+
+    .nav-group {
+      margin-bottom: 30px;
+
+      .group-label {
+        display: block;
+        padding-left: 12px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 700;
+        color: #718096;
+        letter-spacing: 1px;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        border-radius: 12px;
+        color: #a0aec0;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        margin-bottom: 4px;
+
+        mat-icon { margin-right: 12px; font-size: 20px; width: 20px; height: 20px; }
+        span { font-weight: 500; font-size: 14px; }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.05);
+          color: #ffffff;
+        }
+
+        &.active-link {
+          background: #2e7cf0;
+          color: #ffffff;
+          box-shadow: 0 4px 15px rgba(46, 124, 240, 0.3);
+          
+          mat-icon { color: #ffffff; }
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    padding: 20px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    .logout-card {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border-radius: 12px;
+      color: #fc8181;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      mat-icon { margin-right: 12px; }
+      span { font-weight: 600; }
+
+      &:hover {
+        background: rgba(252, 129, 129, 0.1);
+      }
+    }
+  }
+}

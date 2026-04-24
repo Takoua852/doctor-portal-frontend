@@ -1,1 +1,49 @@
-<p>appointment-form works!</p>
+<div style="display:flex; justify-content:center; margin-top:40px;">
+  <mat-card style="width:500px;">
+    <h2>{{ isEditMode ? 'Edit Appointment' : 'Create Appointment' }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="outline" style="width:100%;" *ngIf="role === 'patient' && !isEditMode">
+        <mat-label>Doctor</mat-label>
+        <mat-select formControlName="doctor">
+          <mat-option *ngFor="let doctor of doctors" [value]="doctor.id">
+            {{ doctor.username }} ({{ doctor.specialty_display || doctor.specialty }})
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="width:100%;" *ngIf="role === 'doctor' && !isEditMode">
+        <mat-label>Patient ID</mat-label>
+        <input matInput type="number" formControlName="patient">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="width:100%;">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="width:100%;">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" style="width:100%;">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div style="display:flex; gap:10px; margin-top:16px;">
+        <button mat-raised-button color="primary" type="submit">
+          {{ isEditMode ? 'Update' : 'Create' }}
+        </button>
+
+        <button mat-button routerLink="/appointments">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

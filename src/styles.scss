@@ -1,1 +1,144 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Brand Colors */
+  --primary-color: #2E7CF0;      
+  --primary-dark: #1A5ABF;
+  --primary-light: #EBF4FF;
+  
+  /* Neutral Palette */
+  --text-main: #1A1C1E;          
+  --text-muted: #718096;         
+  --bg-main: #F8FAFC;            
+  --bg-card: #FFFFFF;
+  --border-color: #EDF2F7;
+
+  /* Functional Colors */
+  --success: #48BB78;            
+  --warning: #F6AD55;            
+  --error: #E53E3E;              
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 1.875rem; font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: color 0.2s;
+}
+
+/* --- Layout Helper --- */
+.spacer { flex: 1 1 auto; }
+
+/* --- Modern Card Style --- */
+.omni-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.omni-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* --- Angular Material Overrides (Branding) --- */
+
+/* Buttons */
+.mat-mdc-raised-button.mat-primary {
+  border-radius: 10px !important;
+  padding: 10px 24px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  background-color: var(--primary-color) !important;
+  box-shadow: 0 4px 14px 0 rgba(46, 124, 240, 0.3) !important;
+}
+
+.mat-mdc-button {
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+}
+
+/* Toolbar Customizing */
+.mat-toolbar.mat-primary {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Form Fields */
+.mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: var(--border-color) !important;
+}
+
+/* --- Branding --- */
+.brand-name {
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -1px;
+  color: var(--text-main);
+}
+
+.brand-name .highlight {
+  color: var(--primary-color);
+}
+
+/* Custom Scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A0AEC0;
+}
+
+.error-snackbar {
+  background-color: var(--error) !important;
+  color: white !important;
+}

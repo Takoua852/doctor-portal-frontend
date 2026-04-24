@@ -1,0 +1,54 @@
+<mat-toolbar class="topbar-main">
+  <div class="search-box">
+    <mat-icon>search</mat-icon>
+    <input type="text" placeholder="Search patients, records, help...">
+  </div>
+
+  <span class="spacer"></span>
+
+  <div class="action-items">
+    <button mat-icon-button matTooltip="Global Search">
+      <mat-icon>language</mat-icon>
+    </button>
+
+    <button mat-icon-button [matBadge]="3" matBadgeColor="warn">
+      <mat-icon>notifications_none</mat-icon>
+    </button>
+
+    <div class="divider"></div>
+
+    <div class="user-profile" [matMenuTriggerFor]="profileMenu">
+      <div class="profile-text">
+        <span class="user-role">{{ authService.currentUserSig()?.role | titlecase }}</span>
+        <span class="user-name">Welcome, {{ authService.currentUserSig()?.username || 'User' }}</span>
+      </div>
+      
+      <div class="avatar-container">
+        <div class="avatar-placeholder" *ngIf="!hasPhoto">
+          {{ authService.currentUserSig()?.username?.charAt(0) | uppercase }}
+        </div>
+        <div class="online-indicator"></div>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-menu #profileMenu="matMenu" class="custom-menu">
+  <div class="menu-header">
+    <p class="menu-user">{{ authService.currentUserSig()?.username }}</p>
+  </div>
+  <mat-divider></mat-divider>
+  <button mat-menu-item routerLink="/profile">
+    <mat-icon>account_circle</mat-icon>
+    <span>My Profile</span>
+  </button>
+  <button mat-menu-item routerLink="/settings">
+    <mat-icon>settings</mat-icon>
+    <span>Settings</span>
+  </button>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="onLogout()" class="logout-item">
+    <mat-icon color="warn">logout</mat-icon>
+    <span class="warn-text">Logout</span>
+  </button>
+</mat-menu>

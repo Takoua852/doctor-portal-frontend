@@ -1,1 +1,95 @@
-<p>doctor-dashboard works!</p>
+<div class="dashboard-container">
+  
+  <header class="dashboard-header">
+    <div class="welcome-text">
+      <h2>{{ getGreeting() }}, Dr. {{ authService.currentUserSig()?.username }}</h2>
+      <p>You have {{ todayAppointments().length }} patients on your schedule today.</p>
+    </div>
+    <div class="header-actions">
+      <button mat-stroked-button color="primary">
+        <mat-icon>file_download</mat-icon>
+        Reports
+      </button>
+      <button mat-raised-button color="primary">
+        <mat-icon>add</mat-icon>
+        New Patient
+      </button>
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card" *ngFor="let stat of stats()">
+      <div class="icon-box" [ngClass]="stat.color">
+        <mat-icon>{{ stat.icon }}</mat-icon>
+      </div>
+      <div class="stat-content">
+        <span class="label">{{ stat.label }}</span>
+        <span class="value">{{ stat.value }}</span>
+        <span class="trend" [class.positive]="stat.trend.includes('+')">
+          {{ stat.trend }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    
+    <section class="content-card">
+      <div class="card-header">
+        <h3>Today's Appointments</h3>
+        <a routerLink="/appointments">View Full Calendar</a>
+      </div>
+
+      <div class="appointment-list">
+        <div class="appointment-item" *ngFor="let appt of todayAppointments()">
+          <div class="time">{{ appt.time }}</div>
+          <div class="patient-info">
+            <span class="name">{{ appt.patient }}</span>
+            <span class="type">{{ appt.type }}</span>
+          </div>
+          <div class="status-badge" [ngClass]="appt.status.toLowerCase().replace(' ', '-')">
+            {{ appt.status }}
+          </div>
+          <button mat-icon-button>
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+
+        <div class="empty-state" *ngIf="todayAppointments().length === 0">
+          <mat-icon>event_available</mat-icon>
+          <p>No more appointments for today.</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="content-card">
+      <div class="card-header">
+        <h3>Quick Actions</h3>
+      </div>
+      <div class="action-grid">
+        <button mat-button>
+          <mat-icon>edit_note</mat-icon>
+          Prescriptions
+        </button>
+        <button mat-button>
+          <mat-icon>analytics</mat-icon>
+          Lab Results
+        </button>
+        <button mat-button>
+          <mat-icon>chat_bubble_outline</mat-icon>
+          Patient Messages
+        </button>
+        <button mat-button>
+          <mat-icon>settings_backup_restore</mat-icon>
+          Recent Records
+        </button>
+      </div>
+
+      <div class="info-box mt-4" style="margin-top: 24px; padding: 16px; background: #f0f7ff; border-radius: 12px;">
+        <span style="font-size: 12px; font-weight: 700; color: #2e7cf0; text-transform: uppercase;">System Note</span>
+        <p style="font-size: 13px; color: #4a5568; margin-top: 8px;">Update 2.4: You can now sign documents digitally using the new E-Signature tool.</p>
+      </div>
+    </aside>
+
+  </div>
+</div>

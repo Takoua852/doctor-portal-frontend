@@ -1,10 +1,39 @@
-<h2>Login</h2>
+<div class="auth-container">
+  <div class="auth-card omni-card">
+    <div class="auth-header">
+      <img src="assets/omnihealth-logo.png" alt="OmniHealth Portal" class="auth-logo">
+      <p class="auth-subtitle">Please sign in to access your medical dashboard</p>
+    </div>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input type="email" formControlName="email" placeholder="Email" />
-  <input type="password" formControlName="password" placeholder="Password" />
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="doctor@omnihealth.com">
+        <mat-icon matSuffix>mail_outline</mat-icon>
+      </mat-form-field>
 
-  <button type="submit">Login</button>
-</form>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
 
-<p *ngIf="error">{{ error }}</p>
+      <div class="auth-options">
+        <mat-checkbox color="primary">Remember me</mat-checkbox>
+        <a routerLink="/forgot-password" class="forgot-link">Forgot Password?</a>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" class="auth-submit-btn" [disabled]="loading">
+        <span *ngIf="!loading">Login</span>
+        <mat-spinner diameter="20" *ngIf="loading"></mat-spinner>
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <span>Don't have an account yet?</span>
+      <a routerLink="/register">Register now</a>
+    </div>
+  </div>
+</div>

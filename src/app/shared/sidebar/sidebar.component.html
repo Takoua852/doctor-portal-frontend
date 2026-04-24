@@ -1,0 +1,55 @@
+<div class="sidebar-wrapper">
+  <div class="brand-section" routerLink="/dashboard">
+    <div class="logo-icon">
+      <mat-icon>health_and_safety</mat-icon>
+    </div>
+    <span class="logo-text">Omni<span>Health</span></span>
+  </div>
+
+  <nav class="nav-container">
+    <div class="nav-group">
+      <small class="group-label">Main Menu</small>
+      
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link" class="nav-item">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+
+      <a mat-list-item routerLink="/appointments" routerLinkActive="active-link" class="nav-item">
+        <mat-icon>calendar_today</mat-icon>
+        <span>Appointments</span>
+      </a>
+
+      <a mat-list-item routerLink="/patients" routerLinkActive="active-link" class="nav-item">
+        <mat-icon>person_search</mat-icon>
+        <span>Patients</span>
+      </a>
+
+      <a mat-list-item routerLink="/messages" routerLinkActive="active-link" class="nav-item">
+        <mat-icon [matBadge]="3" matBadgeColor="warn" matBadgeSize="small">mail_outline</mat-icon>
+        <span>Messages</span>
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <small class="group-label">Systems</small>
+      
+      <a mat-list-item routerLink="/billing" routerLinkActive="active-link" class="nav-item">
+        <mat-icon>payments</mat-icon>
+        <span>Billing</span>
+      </a>
+
+      <a mat-list-item routerLink="/settings" routerLinkActive="active-link" class="nav-item">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="logout-card" (click)="authService.logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Sign Out</span>
+    </div>
+  </div>
+</div>

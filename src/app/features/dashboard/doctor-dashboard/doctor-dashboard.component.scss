@@ -1,0 +1,169 @@
+:host {
+  display: block;
+  padding: 32px;
+  background-color: #f8fafc;
+  min-height: calc(100vh - 75px);
+}
+
+.dashboard-container {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  // Header Bereich
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+
+    .welcome-text {
+      h2 {
+        font-size: 28px;
+        font-weight: 800;
+        color: #1a1c1e;
+        margin: 0 0 4px 0;
+        letter-spacing: -0.5px;
+      }
+      p {
+        color: #718096;
+        margin: 0;
+        font-size: 16px;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      button {
+        border-radius: 12px;
+        font-weight: 600;
+        height: 48px;
+        mat-icon { margin-right: 8px; }
+      }
+    }
+  }
+
+  // Statistik-Grid
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+
+    .stat-card {
+      background: white;
+      padding: 24px;
+      border-radius: 20px;
+      border: 1px solid #edf2f7;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .icon-box {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        mat-icon { font-size: 28px; width: 28px; height: 28px; }
+
+        &.blue { background: #ebf4ff; color: #2e7cf0; }
+        &.green { background: #f0fff4; color: #38a169; }
+        &.orange { background: #fffaf0; color: #ed8936; }
+        &.purple { background: #faf5ff; color: #805ad5; }
+      }
+
+      .stat-content {
+        .label { font-size: 14px; color: #718096; font-weight: 500; display: block; }
+        .value { font-size: 24px; font-weight: 800; color: #1a1c1e; display: block; }
+        .trend { 
+          font-size: 12px; 
+          font-weight: 600; 
+          &.positive { color: #38a169; }
+          color: #718096; 
+        }
+      }
+    }
+  }
+
+  // Haupt-Layout (Zwei Spalten)
+  .main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+
+    .content-card {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid #edf2f7;
+      padding: 24px;
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        h3 { font-size: 18px; font-weight: 700; margin: 0; }
+        a { color: #2e7cf0; text-decoration: none; font-size: 14px; font-weight: 600; }
+      }
+    }
+
+    // Termin-Liste Styling
+    .appointment-list {
+      .appointment-item {
+        display: flex;
+        align-items: center;
+        padding: 16px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        transition: background 0.2s;
+        
+        &:hover { background: #f8fafc; }
+
+        .time { font-weight: 700; color: #1a1c1e; width: 100px; font-size: 14px; }
+        .patient-info {
+          flex: 1;
+          .name { display: block; font-weight: 600; color: #1a1c1e; }
+          .type { font-size: 12px; color: #718096; }
+        }
+        .status-badge {
+          padding: 6px 12px;
+          border-radius: 8px;
+          font-size: 12px;
+          font-weight: 700;
+          &.in-progress { background: #ebf4ff; color: #2e7cf0; }
+          &.waiting { background: #fffaf0; color: #ed8936; }
+          &.scheduled { background: #f7fafc; color: #718096; }
+        }
+      }
+    }
+
+    // Quick Actions Styling
+    .action-grid {
+      display: grid;
+      gap: 12px;
+      button {
+        justify-content: flex-start;
+        height: 50px;
+        border-radius: 12px;
+        font-weight: 500;
+        color: #4a5568;
+        mat-icon { margin-right: 12px; color: #2e7cf0; }
+        &:hover { background: #f0f7ff; color: #2e7cf0; }
+      }
+    }
+  }
+}
+
+// Mobile Anpassungen
+@media (max-width: 1024px) {
+  .main-grid { grid-template-columns: 1fr; }
+}

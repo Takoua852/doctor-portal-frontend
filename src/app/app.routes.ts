@@ -6,10 +6,10 @@ import { DoctorDashboardComponent } from './features/dashboard/doctor-dashboard/
 import { PatientDashboardComponent } from './features/dashboard/patient-dashboard/patient-dashboard.component';
 import { AppointmentListComponent } from './features/appointments/appointment-list/appointment-list.component';
 import { AppointmentFormComponent } from './features/appointments/appointment-form/appointment-form.component';
+import { LandingPageComponent } from './features/landing-page/landing-page.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-
+  { path: '', component: LandingPageComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
@@ -34,5 +34,5 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
 
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: '' }
 ];

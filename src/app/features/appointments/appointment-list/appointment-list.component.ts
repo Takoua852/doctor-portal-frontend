@@ -1,11 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppointmentService, Appointment } from '../../../core/services/appointment.service';
-
+import { RouterLink } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-appointment-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, MatCardModule, MatButtonModule],
   templateUrl: './appointment-list.component.html'
 })
 export class AppointmentListComponent implements OnInit {

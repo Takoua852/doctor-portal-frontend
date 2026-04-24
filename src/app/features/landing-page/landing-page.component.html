@@ -1,0 +1,61 @@
+<div class="landing-wrapper">
+  <nav class="navbar">
+    <div class="logo">
+      <mat-icon color="primary" class="brand-icon">health_and_safety</mat-icon>
+      <span class="logo-text">Omni<span>Health</span></span>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/login" mat-button class="login-btn">Login</a>
+      <a routerLink="/register" mat-raised-button color="primary" class="start-btn">Get Started</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Smart EMR Solutions</div>
+      <h1>Your Health, <br>Our <span>Priority.</span></h1>
+      <p>The most intuitive EMR system for doctors and patients. Manage appointments, medical records, and prescriptions with ease.</p>
+      
+      <div class="cta-group">
+        <button mat-raised-button color="primary" routerLink="/register" [queryParams]="{role: 'doctor'}">
+          <mat-icon>medical_services</mat-icon>
+          Register as Doctor
+        </button>
+        <button mat-stroked-button color="primary" routerLink="/register" [queryParams]="{role: 'patient'}">
+          Register as Patient
+        </button>
+      </div>
+    </div>
+    
+    <div class="hero-image">
+      <div class="blob-bg"></div>
+      <img src="assets/dashboard-preview.png" alt="App Preview" class="floating">
+    </div>
+  </header>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="icon-wrapper blue">
+        <mat-icon>calendar_today</mat-icon>
+      </div>
+      <h3>Easy Scheduling</h3>
+      <p>Book appointments in seconds without any hassle for both sides.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="icon-wrapper green">
+        <mat-icon>security</mat-icon>
+      </div>
+      <h3>Secure Records</h3>
+      <p>Your medical data is encrypted and compliant with global standards.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="icon-wrapper purple">
+        <mat-icon>speed</mat-icon>
+      </div>
+      <h3>Fast Access</h3>
+      <p>Access your health history anytime, anywhere on any device.</p>
+    </div>
+  </section>
+</div>

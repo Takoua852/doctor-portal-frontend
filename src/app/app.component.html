@@ -1,1 +1,20 @@
-<router-outlet></router-outlet>
+<div class="app-wrapper" *ngIf="showLayout; else publicLayout">
+  
+  <aside class="sidebar-container" [class.hidden]="!isSidebarVisible">
+    <app-sidebar></app-sidebar>
+  </aside>
+
+  <div class="main-layout">
+    <app-topbar (toggleSidebar)="toggleSidebar()"></app-topbar>
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+</div>
+
+<ng-template #publicLayout>
+  <div class="full-page-container">
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>
